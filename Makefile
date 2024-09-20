@@ -16,6 +16,13 @@
 # ==============================================================================
 # Build tunables
 
+# 设置构建代理参数
+export http_proxy := http://192.168.115.208:38009
+export https_proxy := http://192.168.115.208:38009
+export no_proxy := apache.dameng.io,minio.dameng.io,nexus.dameng.io,git.dameng.com,harbor.dameng.io,192.168.115.208,192.168.144.247
+
+export BUILD_ARGS ?= --build-arg HTTP_PROXY="${http_proxy}" --build-arg HTTPS_PROXY="${https_proxy}" --build-arg NO_PROXY="${no_proxy}"
+
 # When updating these defaults, be sure to check that ALL_BUILDABLE_FLAVORS is updated
 FLAVORS ?= \
 	quincy,centos,9 \
